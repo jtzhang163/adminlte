@@ -15,11 +15,11 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="adminlte_ssm" target="1.5" />
-      <module name="adminlte_ssm_dao" target="1.5" />
-      <module name="adminlte_ssm_domain" target="1.5" />
-      <module name="adminlte_ssm_service" target="1.5" />
-      <module name="adminlte_ssm_utils" target="1.5" />
-      <module name="adminlte_ssm_web" target="1.7" />
+      <module name="adminlte_ssm_dao" target="1.8" />
+      <module name="adminlte_ssm_domain" target="1.8" />
+      <module name="adminlte_ssm_service" target="1.8" />
+      <module name="adminlte_ssm_utils" target="1.8" />
+      <module name="adminlte_ssm_web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
