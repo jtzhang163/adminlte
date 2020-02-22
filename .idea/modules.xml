@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm.iml" filepath="$PROJECT_DIR$/adminlte_ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_dao/adminlte_ssm_dao.iml" filepath="$PROJECT_DIR$/adminlte_ssm_dao/adminlte_ssm_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_domain/adminlte_ssm_domain.iml" filepath="$PROJECT_DIR$/adminlte_ssm_domain/adminlte_ssm_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_service/adminlte_ssm_service.iml" filepath="$PROJECT_DIR$/adminlte_ssm_service/adminlte_ssm_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_utils/adminlte_ssm_utils.iml" filepath="$PROJECT_DIR$/adminlte_ssm_utils/adminlte_ssm_utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_web/adminlte_ssm_web.iml" filepath="$PROJECT_DIR$/adminlte_ssm_web/adminlte_ssm_web.iml" />
+    </modules>
+  </component>
+</project>
