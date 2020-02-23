@@ -25,4 +25,11 @@ public class ProductController {
         mv.setViewName("product-list");
         return mv;
     }
+
+    @RequestMapping("/save.do")
+    public String save(Product product) {
+
+        productService.save(product);
+        return "redirect:findAll.do";
+    }
 }
