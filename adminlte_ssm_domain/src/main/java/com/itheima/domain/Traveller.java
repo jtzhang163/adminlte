@@ -52,6 +52,10 @@ public class Traveller {
     }
 
     public String getCredentialsTypeStr() {
+        //证件类型 0身份证 1护照 2军官证
+        if (credentialsType != null) {
+            credentialsTypeStr = credentialsType == 0 ? "身份证" : credentialsType == 1 ? "护照" : credentialsType == 2 ? "军官证" : "";
+        }
         return credentialsTypeStr;
     }
 
@@ -76,6 +80,10 @@ public class Traveller {
     }
 
     public String getTravellerTypeStr() {
+        //旅客类型(人群) 0 成人 1 儿童
+        if (travellerType != null) {
+            travellerTypeStr = travellerType == 0 ? "成人" : travellerType == 1 ? "儿童" : "";
+        }
         return travellerTypeStr;
     }
 

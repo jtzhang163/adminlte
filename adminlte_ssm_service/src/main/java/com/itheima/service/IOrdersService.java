@@ -9,4 +9,6 @@ public interface IOrdersService {
     List<Orders> findAll();
 
     List<Orders> findAll(int page, int pageSize);
+
+    Orders findById(String id);
 }

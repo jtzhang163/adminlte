@@ -28,4 +28,9 @@ public class OrdersServiceImpl implements IOrdersService {
         return ordersDao.findAll();
     }
 
+    @Override
+    public Orders findById(String id) {
+        return ordersDao.findById(id);
+    }
+
 }
