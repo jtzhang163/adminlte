@@ -13,6 +13,9 @@
           <element id="archive" name="adminlte_ssm_domain-1.0-SNAPSHOT.jar">
             <element id="module-output" name="adminlte_ssm_domain" />
           </element>
+          <element id="archive" name="adminlte_ssm_utils-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="adminlte_ssm_utils" />
+          </element>
           <element id="archive" name="adminlte_ssm_dao-1.0-SNAPSHOT.jar">
             <element id="module-output" name="adminlte_ssm_dao" />
           </element>

@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import com.itheima.utils.DateUtils;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -56,11 +58,10 @@ public class Product implements Serializable {
     }
 
     public String getDepartureTimeStr() {
+        if (departureTime != null) {
+            departureTimeStr = DateUtils.date2String(departureTime,"yyyy-MM-dd HH:mm:ss");
+        }
         return departureTimeStr;
-    }
-
-    public void setDepartureTimeStr(String departureTimeStr) {
-        this.departureTimeStr = departureTimeStr;
     }
 
     public double getProductPrice() {
@@ -88,11 +89,13 @@ public class Product implements Serializable {
     }
 
     public String getProductStatusStr() {
+        if(productStatus != null){
+            if(productStatus == 0){
+                productStatusStr = "关闭";
+            }else if (productStatus == 1){
+                productStatusStr = "开启";
+            }
+        }
         return productStatusStr;
     }
-
-    public void setProductStatusStr(String productStatusStr) {
-        this.productStatusStr = productStatusStr;
-    }
-
 }
