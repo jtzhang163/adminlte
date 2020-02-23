@@ -240,23 +240,41 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${ordersList}" var="orders">
+									<%--<c:forEach items="${ordersList}" var="orders">--%>
 
-										<tr>
-											<td><input name="ids" type="checkbox"></td>
-											<td>${orders.id }</td>
-											<td>${orders.orderNum }</td>
-											<td>${orders.product.productName }</td>
-											<td>${orders.product.productPrice }</td>
-											<td>${orders.orderTimeStr }</td>
-											<td class="text-center">${orders.orderStatusStr }</td>
-											<td class="text-center">
-												<button type="button" class="btn bg-olive btn-xs">订单</button>
-												<button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
-												<button type="button" class="btn bg-olive btn-xs">编辑</button>
-											</td>
-										</tr>
-									</c:forEach>
+										<%--<tr>--%>
+											<%--<td><input name="ids" type="checkbox"></td>--%>
+											<%--<td>${orders.id }</td>--%>
+											<%--<td>${orders.orderNum }</td>--%>
+											<%--<td>${orders.product.productName }</td>--%>
+											<%--<td>${orders.product.productPrice }</td>--%>
+											<%--<td>${orders.orderTimeStr }</td>--%>
+											<%--<td class="text-center">${orders.orderStatusStr }</td>--%>
+											<%--<td class="text-center">--%>
+												<%--<button type="button" class="btn bg-olive btn-xs">订单</button>--%>
+												<%--<button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>--%>
+												<%--<button type="button" class="btn bg-olive btn-xs">编辑</button>--%>
+											<%--</td>--%>
+										<%--</tr>--%>
+									<%--</c:forEach>--%>
+
+                                    <c:forEach items="${pageInfo.list}" var="orders">
+
+                                        <tr>
+                                            <td><input name="ids" type="checkbox"></td>
+                                            <td>${orders.id }</td>
+                                            <td>${orders.orderNum }</td>
+                                            <td>${orders.product.productName }</td>
+                                            <td>${orders.product.productPrice }</td>
+                                            <td>${orders.orderTimeStr }</td>
+                                            <td class="text-center">${orders.orderStatusStr }</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn bg-olive btn-xs">订单</button>
+                                                <button type="button" class="btn bg-olive btn-xs" onclick="location.href='${pageContext.request.contextPath}/orders/findById.do?id=${orders.id}'">详情</button>
+                                                <button type="button" class="btn bg-olive btn-xs">编辑</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
 								</tbody>
 								<!--
                             <tfoot>
@@ -314,12 +332,12 @@
                     <div class="pull-left">
                         <div class="form-group form-inline">
                             总共2 页，共14 条数据。 每页
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select id="changePageSize" class="form-control" onchange="changePageSize()">
+								<option <c:if test="${pageInfo.pageSize == 1}">selected="selected"</c:if>>1</option>1
+                                <option <c:if test="${pageInfo.pageSize == 2}">selected="selected"</c:if>>2</option>
+                                <option <c:if test="${pageInfo.pageSize == 3}">selected="selected"</c:if>>3</option>
+                                <option <c:if test="${pageInfo.pageSize == 4}">selected="selected"</c:if>>4</option>
+                                <option <c:if test="${pageInfo.pageSize == 5}">selected="selected"</c:if>>5</option>
                             </select> 条
                         </div>
                     </div>
@@ -327,17 +345,17 @@
                     <div class="box-tools pull-right">
                         <ul class="pagination">
                             <li>
-                                <a href="#" aria-label="Previous">首页</a>
+                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize=${pageInfo.pageSize}" aria-label="Previous">首页</a>
                             </li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">下一页</a></li>
+                            <li <c:if test="${pageInfo.pageNum == 1}">class="disabled"</c:if>><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.prePage}&pageSize=${pageInfo.pageSize}">上一页</a></li>
+
+							<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
+								<li <c:if test="${pageInfo.pageNum == pageNum}">class="active"</c:if>><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageNum}&pageSize=${pageInfo.pageSize}">${pageNum}</a></li>
+							</c:forEach>
+
+                            <li <c:if test="${pageInfo.pageNum == pageInfo.pages}">class="disabled"</c:if>><a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.nextPage}&pageSize=${pageInfo.pageSize}">下一页</a></li>
                             <li>
-                                <a href="#" aria-label="Next">尾页</a>
+                                <a href="${pageContext.request.contextPath}/orders/findAll.do?page=${pageInfo.pages}&pageSize=${pageInfo.pageSize}" aria-label="Next">尾页</a>
                             </li>
                         </ul>
                     </div>
@@ -463,8 +481,7 @@
 			var pageSize = $("#changePageSize").val();
 
 			//向服务器发送请求，改变没页显示条数
-			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize="
-					+ pageSize;
+			location.href = "${pageContext.request.contextPath}/orders/findAll.do?page=1&pageSize="	+ pageSize;
 		}
 		$(document).ready(function() {
 			// 选择框
