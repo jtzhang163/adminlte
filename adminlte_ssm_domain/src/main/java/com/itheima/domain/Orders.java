@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import com.itheima.utils.DateUtils;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +10,9 @@ public class Orders {
     private String orderNum;
     private Date orderTime;
     private String orderTimeStr;
-    private int orderStatus;
-    private int peopleCount;
+    private Integer orderStatus;
+    private String orderStatusStr;
+    private Integer peopleCount;
     private Product product;
     private List<Traveller> travellers;
     private Member member;
@@ -39,14 +42,6 @@ public class Orders {
 
     public void setOrderTime(Date orderTime) {
         this.orderTime = orderTime;
-    }
-
-    public String getOrderTimeStr() {
-        return orderTimeStr;
-    }
-
-    public void setOrderTimeStr(String orderTimeStr) {
-        this.orderTimeStr = orderTimeStr;
     }
 
     public int getOrderStatus() {
@@ -97,7 +92,42 @@ public class Orders {
         this.payType = payType;
     }
 
+    public String getOrderDesc() {
+        return orderDesc;
+    }
+
+    public void setOrderDesc(String orderDesc) {
+        this.orderDesc = orderDesc;
+    }
+
+    public String getOrderStatusStr() {
+        //订单状态(0 未支付 1 已支付)
+        if (orderStatus != null) {
+            if (orderStatus == 0) {
+                orderStatusStr = "未支付";
+            } else if (orderStatus == 1) {
+                orderStatusStr = "已支付";
+            }
+        }
+
+        return orderStatusStr;
+    }
+
+    public void setOrderStatusStr(String orderStatusStr) {
+        this.orderStatusStr = orderStatusStr;
+    }
+
     public String getPayTypeStr() {
+        //支付方式(0 支付宝 1 微信 2其它)
+        if (payType != null) {
+            if (payType == 0) {
+                payTypeStr = "支付宝";
+            } else if (payType == 1) {
+                payTypeStr = "微信";
+            } else if (payType == 2) {
+                payTypeStr = "其他";
+            }
+        }
         return payTypeStr;
     }
 
@@ -105,11 +135,14 @@ public class Orders {
         this.payTypeStr = payTypeStr;
     }
 
-    public String getOrderDesc() {
-        return orderDesc;
+    public String getOrderTimeStr() {
+        if(orderTime!=null) {
+            orderTimeStr = DateUtils.date2String(orderTime, "yyyy-MM-dd HH:mm");
+        }
+        return orderTimeStr;
     }
 
-    public void setOrderDesc(String orderDesc) {
-        this.orderDesc = orderDesc;
+    public void setOrderTimeStr(String orderTimeStr) {
+        this.orderTimeStr = orderTimeStr;
     }
 }
