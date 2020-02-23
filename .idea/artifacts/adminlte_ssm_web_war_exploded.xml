@@ -7,6 +7,15 @@
           <element id="module-output" name="adminlte_ssm_web" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="adminlte_ssm_service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="adminlte_ssm_service" />
+          </element>
+          <element id="archive" name="adminlte_ssm_domain-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="adminlte_ssm_domain" />
+          </element>
+          <element id="archive" name="adminlte_ssm_dao-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="adminlte_ssm_dao" />
+          </element>
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.6.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.2.RELEASE" />

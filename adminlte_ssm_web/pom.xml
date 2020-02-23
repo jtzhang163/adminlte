@@ -29,6 +29,11 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.itheima</groupId>
+            <artifactId>adminlte_ssm_service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,5 +71,19 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <version>2.2</version>
+              <configuration>
+                <uriEncoding>UTF-8</uriEncoding>
+                <path>/</path>
+                <port>8888</port>
+              </configuration>
+            </plugin>
+        </plugins>
+
     </build>
 </project>

@@ -95,6 +95,4 @@ public class Product implements Serializable {
         this.productStatusStr = productStatusStr;
     }
 
-
-
 }
