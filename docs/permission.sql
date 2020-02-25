@@ -1,14 +1,14 @@
--- ÓÃ»§±í
+-- ç”¨æˆ·è¡¨
 CREATE TABLE users(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   email VARCHAR2(50) UNIQUE NOT NULL,
   username VARCHAR2(50),
-  PASSWORD VARCHAR2(50),
+  PASSWORD VARCHAR2(100),
   phoneNum VARCHAR2(20),
   STATUS INT
 );
 
--- ½ÇÉ«±í
+-- è§’è‰²è¡¨
 CREATE TABLE role(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   roleName VARCHAR2(50) ,
@@ -16,7 +16,7 @@ CREATE TABLE role(
 );
 
 
--- ÓÃ»§½ÇÉ«¹ØÁª±í
+-- ç”¨æˆ·è§’è‰²å…³è”è¡¨
 CREATE TABLE users_role(
   userId varchar2(32),
   roleId varchar2(32),
@@ -25,14 +25,14 @@ CREATE TABLE users_role(
   FOREIGN KEY (roleId) REFERENCES role(id)
 );
 
--- ×ÊÔ´È¨ÏŞ±í
+-- èµ„æºæƒé™è¡¨
 CREATE TABLE permission(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   permissionName VARCHAR2(50) ,
   url VARCHAR2(50)
 );
 
--- ½ÇÉ«È¨ÏŞ¹ØÁª±í
+-- è§’è‰²æƒé™å…³è”è¡¨
 CREATE TABLE role_permission(
   permissionId varchar2(32),
   roleId varchar2(32),
@@ -52,13 +52,9 @@ insert into role values('XXXXX','ADMIN','vip');
 insert into role values('YYYY','USER','vip');
 -- 46FA27455F1540FB8EDB79C9D5693E72 wwww
 insert into  users_role values('46FA27455F1540FB8EDB79C9D5693E72', 'wwww');
+insert into  users_role values('46FA27455F1540FB8EDB79C9D5693E72', 'YYYY');
+
+select * from role where id in (select roleId from users_role where userId ='46FA27455F1540FB8EDB79C9D5693E72')
 
 
-
-
-
-
-
-
-
-
+alter table users modify password varchar2(100);

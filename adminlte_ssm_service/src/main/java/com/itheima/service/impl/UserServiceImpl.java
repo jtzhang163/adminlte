@@ -33,7 +33,7 @@ public class UserServiceImpl implements IUserService {
 
         //把自己的UserInfo类封装为SpringSecurity要求的UserDetails类
         //User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(), getAuthorities(userInfo.getRoles()));
-        User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(),
+        User user = new User(userInfo.getUsername(), userInfo.getPassword(),
                 userInfo.getStatus() == 1, true, true, true, getAuthorities(userInfo.getRoles()));
         return user;
     }
