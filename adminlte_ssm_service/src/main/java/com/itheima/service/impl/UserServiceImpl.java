@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,9 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private IUserDao userDao;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;//也可以直接新建使用
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -30,7 +34,7 @@ public class UserServiceImpl implements IUserService {
         //把自己的UserInfo类封装为SpringSecurity要求的UserDetails类
         //User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(), getAuthorities(userInfo.getRoles()));
         User user = new User(userInfo.getUsername(), "{noop}" + userInfo.getPassword(),
-                userInfo.getStatus() == 1,true,true,true, getAuthorities(userInfo.getRoles()));
+                userInfo.getStatus() == 1, true, true, true, getAuthorities(userInfo.getRoles()));
         return user;
     }
 
@@ -52,7 +56,8 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void save(UserInfo userInfo) {
+        //bCryptPasswordEncoder.encode()加密，每次加密的结果不一样，盐动态生成
+        userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
         userDao.save(userInfo);
     }
-
 }
