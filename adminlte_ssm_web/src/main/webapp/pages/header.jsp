@@ -38,6 +38,7 @@
 								<a href="#" class="btn btn-default btn-flat">修改密码</a>
 							</div>
 							<div class="pull-right">
+								<%--用户退出，/logout.do在spring-security.xml中配置--%>
 								<a href="${pageContext.request.contextPath}/logout.do"
 									class="btn btn-default btn-flat">注销</a>
 							</div>
