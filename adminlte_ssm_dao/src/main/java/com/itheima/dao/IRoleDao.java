@@ -1,10 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.domain.Role;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 
 import java.util.List;
@@ -30,4 +27,7 @@ public interface IRoleDao {
                     many = @Many(select = "com.itheima.dao.IPermissionDao.findByRoleId"))
     })
     List<Role> findByUserId(String userId);
+
+    @Insert("insert into role(rolename, roledesc) values(#{roleName},#{roleDesc})")
+    void save(Role role);
 }
