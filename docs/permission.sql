@@ -1,4 +1,4 @@
--- ç”¨æˆ·è¡¨
+-- ÓÃ»§±í
 CREATE TABLE users(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   email VARCHAR2(50) UNIQUE NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE users(
   STATUS INT
 );
 
--- è§’è‰²è¡¨
+-- ½ÇÉ«±í
 CREATE TABLE role(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   roleName VARCHAR2(50) ,
@@ -16,7 +16,7 @@ CREATE TABLE role(
 );
 
 
--- ç”¨æˆ·è§’è‰²å…³è”è¡¨
+-- ÓÃ»§½ÇÉ«¹ØÁª±í
 CREATE TABLE users_role(
   userId varchar2(32),
   roleId varchar2(32),
@@ -25,14 +25,14 @@ CREATE TABLE users_role(
   FOREIGN KEY (roleId) REFERENCES role(id)
 );
 
--- èµ„æºæƒé™è¡¨
+-- ×ÊÔ´È¨ÏŞ±í
 CREATE TABLE permission(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   permissionName VARCHAR2(50) ,
   url VARCHAR2(50)
 );
 
--- è§’è‰²æƒé™å…³è”è¡¨
+-- ½ÇÉ«È¨ÏŞ¹ØÁª±í
 CREATE TABLE role_permission(
   permissionId varchar2(32),
   roleId varchar2(32),
@@ -40,3 +40,25 @@ CREATE TABLE role_permission(
   FOREIGN KEY (permissionId) REFERENCES permission(id),
   FOREIGN KEY (roleId) REFERENCES role(id)
 );
+
+
+select * from users;
+select * from role;
+select * from users_role;
+
+insert into users (email, username, password, phonenum, status) values( 'jtzhang@163.com', '123', '123', '1881999222', '1');
+
+insert into role values('XXXXX','ADMIN','vip');
+insert into role values('YYYY','USER','vip');
+-- 46FA27455F1540FB8EDB79C9D5693E72 wwww
+insert into  users_role values('46FA27455F1540FB8EDB79C9D5693E72', 'wwww');
+
+
+
+
+
+
+
+
+
+
