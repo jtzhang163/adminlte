@@ -1,10 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -36,4 +33,7 @@ public interface IUserDao {
                     many = @Many(select = "com.itheima.dao.IRoleDao.findByUserId"))
     })
     List<UserInfo> findAll();
+
+    @Insert("insert into users (email, username, password, phonenum, status) values(#{email}, #{username}, #{password}, #{phoneNum}, #{status})")
+    void save(UserInfo userInfo);
 }

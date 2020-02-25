@@ -49,4 +49,10 @@ public class UserServiceImpl implements IUserService {
     public List<UserInfo> findAll() {
         return userDao.findAll();
     }
+
+    @Override
+    public void save(UserInfo userInfo) {
+        userDao.save(userInfo);
+    }
+
 }
