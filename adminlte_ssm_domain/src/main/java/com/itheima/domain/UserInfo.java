@@ -2,7 +2,7 @@ package com.itheima.domain;
 
 import java.util.List;
 
-public class User {
+public class UserInfo {
     private String id;
     private String username;
     private String email;

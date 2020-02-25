@@ -16,8 +16,6 @@
         <module>adminlte_ssm_web</module>
     </modules>
 
-
-
     <properties>
         <spring.version>5.0.2.RELEASE</spring.version>
         <slf4j.version>1.6.6</slf4j.version>
@@ -147,6 +145,7 @@
             <artifactId>pagehelper</artifactId>
             <version>5.1.2</version>
         </dependency>
+
 
         <!--spring security坐标-->
         <dependency>
