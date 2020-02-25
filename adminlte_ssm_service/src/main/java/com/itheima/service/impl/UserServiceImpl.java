@@ -55,9 +55,15 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public UserInfo findById(String id) {
+        return userDao.findById(id);
+    }
+
+    @Override
     public void save(UserInfo userInfo) {
         //bCryptPasswordEncoder.encode()加密，每次加密的结果不一样，盐动态生成
         userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
         userDao.save(userInfo);
     }
+
 }

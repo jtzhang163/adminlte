@@ -25,6 +25,15 @@ public class UserController {
         return mv;
     }
 
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(String id) {
+        ModelAndView mv = new ModelAndView();
+        UserInfo user = userService.findById(id);
+        mv.addObject("user", user);
+        mv.setViewName("user-show");
+        return mv;
+    }
+
     @RequestMapping("/save.do")
     public String save(UserInfo userInfo){
         userService.save(userInfo);
