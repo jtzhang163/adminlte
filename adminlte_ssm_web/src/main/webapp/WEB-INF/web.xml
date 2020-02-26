@@ -14,7 +14,7 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- 配置监听器，监听request域对象的创建和销毁的 -->
+  <!-- 配置监听器，监听request域对象的创建和销毁的，AOP日志获取IP需要此配置 -->
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
