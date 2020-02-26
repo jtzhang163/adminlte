@@ -4,6 +4,7 @@ import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
 import com.itheima.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping("/findAll.do")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView findAll(){
         ModelAndView mv = new ModelAndView();
         List<UserInfo> userList = userService.findAll();
@@ -58,6 +60,7 @@ public class UserController {
     }
 
     @RequestMapping("/save.do")
+    @PreAuthorize("authentication.principal.username = 'lisi'")
     public String save(UserInfo userInfo){
         userService.save(userInfo);
         return "redirect:findAll.do";

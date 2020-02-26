@@ -63,5 +63,7 @@
     <security:global-method-security jsr250-annotations="enabled"/>
     <!--开启secured注解使用-->
     <security:global-method-security secured-annotations="enabled"/>
+    <!--开启基于表达式注解支持-->
+    <security:global-method-security pre-post-annotations="enabled"/>
 
 </beans>
