@@ -175,6 +175,7 @@
             <version>${oracle.version}</version>
         </dependency>
 
+        <!--jsr250权限控制坐标导入-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>jsr250-api</artifactId>

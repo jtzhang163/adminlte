@@ -59,5 +59,7 @@
     	</security:authentication-provider>
     </security:authentication-manager>
     -->
+    <!--开启jsr250注解使用-->
+    <security:global-method-security jsr250-annotations="enabled"/>
 
 </beans>
