@@ -52,7 +52,7 @@ insert into users (email, username, password, phonenum, status) values( 'jtzhang
 
 insert into role values('wwww','ADMIN','vip');
 insert into role values('XXXXX','ADMIN','vip');
-insert into role values('YYYY','USER','vip');
+insert into role(rolename, roledesc) values('USER','common');
 
 insert into permission (permissionName, url)values('user_findAll','/user/findAll');//ID:0B4DBE07DAAD4DC5BE7B2E7E6085E0E7
 insert into permission (permissionName, url)values('user_findById','/user/findById');//ID:ED52376A16CD4609A80F93E7D7083401
@@ -60,10 +60,14 @@ insert into permission (permissionName, url)values('user_findById','/user/findBy
 -- 46FA27455F1540FB8EDB79C9D5693E72 wwww
 insert into  users_role values('46FA27455F1540FB8EDB79C9D5693E72', 'wwww');
 insert into  users_role values('46FA27455F1540FB8EDB79C9D5693E72', 'YYYY');
+insert into users_role(userId, roleId) values('46FA27455F1540FB8EDB79C9D5693E72', 'YYYY');
+insert into users_role(userId, roleId) values('46FA27455F1540FB8EDB79C9D5693E72', '4C32F4944A9D4B768AA731E4BB0C33AF')
 
-insert into  role_permission values('0B4DBE07DAAD4DC5BE7B2E7E6085E0E7', 'XXXXX');
-insert into  role_permission values('0B4DBE07DAAD4DC5BE7B2E7E6085E0E7', 'wwww');
-insert into  role_permission values('ED52376A16CD4609A80F93E7D7083401', 'YYYY');
+insert into  role_permission(permissionId, roleid) values('E9BE5DD0F58A4AAE853E04FDE81B830E', 'BD56655152004843BF5B526225687720');
+insert into  role_permission(permissionId, roleid) values('B088B970BEAA44229E44BE2D1B6D3E3F', 'AA8F529505D245AF861BDD0AA18D2C6D');
+insert into  role_permission(permissionId, roleid) values('B2E32158F3394FBFA5B7B48E49A932D0', '700A19BB767048C6868CDAF7FE9A0D71');
+insert into  role_permission(permissionId, roleid) values('21B0BE7A7FCA42768D7398302C7835FF', 'BD56655152004843BF5B526225687720');
+
 
 select * from role where id in (select roleId from users_role where userId ='46FA27455F1540FB8EDB79C9D5693E72')
 

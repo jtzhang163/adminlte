@@ -60,6 +60,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<Role> findOtherRoles(String userId) {
+        return userDao.findOtherRoles(userId);
+    }
+
+    @Override
+    public void addRoleToUser(String userId, String[] roleIds) {
+        for(String roleId : roleIds) {
+            userDao.addRoleToUser(userId, roleId);
+        }
+    }
+
+    @Override
     public void save(UserInfo userInfo) {
         //bCryptPasswordEncoder.encode()加密，每次加密的结果不一样，盐动态生成
         userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
