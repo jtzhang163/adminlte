@@ -1,4 +1,4 @@
--- ÓÃ»§±í
+-- ç”¨æˆ·è¡¨
 CREATE TABLE users(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   email VARCHAR2(50) UNIQUE NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE users(
   STATUS INT
 );
 
--- ½ÇÉ«±í
+-- è§’è‰²è¡¨
 CREATE TABLE role(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   roleName VARCHAR2(50) ,
@@ -16,7 +16,7 @@ CREATE TABLE role(
 );
 
 
--- ÓÃ»§½ÇÉ«¹ØÁª±í
+-- ç”¨æˆ·è§’è‰²å…³è”è¡¨
 CREATE TABLE users_role(
   userId varchar2(32),
   roleId varchar2(32),
@@ -25,14 +25,14 @@ CREATE TABLE users_role(
   FOREIGN KEY (roleId) REFERENCES role(id)
 );
 
--- ×ÊÔ´È¨ÏŞ±í
+-- èµ„æºæƒé™è¡¨
 CREATE TABLE permission(
   id varchar2(32) default SYS_GUID() PRIMARY KEY,
   permissionName VARCHAR2(50) ,
   url VARCHAR2(50)
 );
 
--- ½ÇÉ«È¨ÏŞ¹ØÁª±í
+-- è§’è‰²æƒé™å…³è”è¡¨
 CREATE TABLE role_permission(
   permissionId varchar2(32),
   roleId varchar2(32),
@@ -74,3 +74,14 @@ select * from role where id in (select roleId from users_role where userId ='46F
 
 alter table users modify password varchar2(100);
 update users set password = '$2a$10$7VJPykMi1NIZNypCnXd9TOpyb8KW0ak/Ud/ABCQmg5fStfimN65Ti' where username = '123';
+
+
+CREATE TABLE sysLog(
+  id VARCHAR2(32) default SYS_GUID() PRIMARY KEY,
+  visitTime timestamp,
+  username VARCHAR2(50),
+  ip VARCHAR2(30),
+  url VARCHAR2(50),
+  executionTime int,
+  method VARCHAR2(200)
+);
