@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.itheima.domain.Orders;
 import com.itheima.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +32,7 @@ public class OrdersController {
 
     //分页
     @RequestMapping("/findAll.do")
+    @Secured("ROLE_ADMIN")
     public ModelAndView findAll(@RequestParam(name = "page", required = true,defaultValue = "1") int page,
                                 @RequestParam(name = "pageSize", required = true,defaultValue = "5") int pageSize) {
         ModelAndView mv = new ModelAndView();

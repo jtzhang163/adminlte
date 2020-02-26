@@ -61,5 +61,7 @@
     -->
     <!--开启jsr250注解使用-->
     <security:global-method-security jsr250-annotations="enabled"/>
+    <!--开启secured注解使用-->
+    <security:global-method-security secured-annotations="enabled"/>
 
 </beans>
