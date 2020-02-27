@@ -33,8 +33,8 @@ public class OrdersController {
     //分页
     @RequestMapping("/findAll.do")
     @Secured("ROLE_ADMIN")
-    public ModelAndView findAll(@RequestParam(name = "page", required = true,defaultValue = "1") int page,
-                                @RequestParam(name = "pageSize", required = true,defaultValue = "5") int pageSize) {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true,defaultValue = "1") Integer page,
+                                @RequestParam(name = "pageSize", required = true,defaultValue = "5") Integer pageSize) {
         ModelAndView mv = new ModelAndView();
 
         List<Orders> ordersList = ordersService.findAll(page, pageSize);

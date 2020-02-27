@@ -1,5 +1,7 @@
 package com.itheima.controller;
 
+import com.itheima.domain.SysLog;
+import com.itheima.service.ISysLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,6 +20,9 @@ import java.util.Date;
 @Component
 @Aspect
 public class LogAop {
+
+    @Autowired
+    private ISysLogService sysLogService;
 
     @Autowired
     private HttpServletRequest request;
@@ -73,10 +78,18 @@ public class LogAop {
         //获取当前用户名
         SecurityContext context = SecurityContextHolder.getContext();
 
-            //另一种获取方法: SecurityContext context = request.getSession().getAttribute("SPRING_SECURITY_CONTEXT")
-        User user = (User)context.getAuthentication().getPrincipal();
+        //另一种获取方法: SecurityContext context = request.getSession().getAttribute("SPRING_SECURITY_CONTEXT")
+        User user = (User) context.getAuthentication().getPrincipal();
         String username = user.getUsername();
 
-
+        //封装SysLog
+        SysLog sysLog = new SysLog();
+        sysLog.setExecutionTime(time);
+        sysLog.setUsername(username);
+        sysLog.setIp(ip);
+        sysLog.setMethod("[类名]" + clazz.getName() + "[方法名]" + method.getName());
+        sysLog.setUrl(url);
+        sysLog.setVisitTime(visitTime);
+        sysLogService.save(sysLog);
     }
 }
