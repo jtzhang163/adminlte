@@ -1,5 +1,7 @@
 package com.itheima.domain;
 
+import com.itheima.utils.DateUtils;
+
 import java.util.Date;
 
 public class SysLog {
@@ -29,6 +31,7 @@ public class SysLog {
     }
 
     public String getVisitTimeStr() {
+        visitTimeStr = DateUtils.date2String(visitTime, "yyyy-MM-dd HH:mm:ss");
         return visitTimeStr;
     }
 

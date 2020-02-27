@@ -55,22 +55,8 @@ public class LogAop {
     //后置通知
     @After("execution(* com.itheima.controller.*.*(..))")
     public void doAfter(JoinPoint jp) {
+        //计算执行时长
         long time = new Date().getTime() - visitTime.getTime();
-
-        //获取URL
-        String url = "";
-        if (clazz != null && method != null && clazz != LogAop.class) {
-            //获取注解内容：@RequestMapping("/orders")
-            RequestMapping classAnnotation = (RequestMapping) clazz.getAnnotation(RequestMapping.class);
-            if (classAnnotation != null) {
-                String classValue = classAnnotation.value()[0];
-                RequestMapping methodAnnotation = (RequestMapping) method.getAnnotation(RequestMapping.class);
-                if (methodAnnotation != null) {
-                    String methodValue = methodAnnotation.value()[0];
-                    url = classValue + methodValue; //url: /orders/findAll.do
-                }
-            }
-        }
 
         //获取IP：通过request对象
         String ip = request.getRemoteAddr();
@@ -82,14 +68,31 @@ public class LogAop {
         User user = (User) context.getAuthentication().getPrincipal();
         String username = user.getUsername();
 
-        //封装SysLog
-        SysLog sysLog = new SysLog();
-        sysLog.setExecutionTime(time);
-        sysLog.setUsername(username);
-        sysLog.setIp(ip);
-        sysLog.setMethod("[类名]" + clazz.getName() + "[方法名]" + method.getName());
-        sysLog.setUrl(url);
-        sysLog.setVisitTime(visitTime);
-        sysLogService.save(sysLog);
+        //获取URL
+        String url = "";
+        if (clazz != null && method != null && clazz != LogAop.class && clazz != SysLogController.class) {
+            //获取注解内容：@RequestMapping("/orders")
+            RequestMapping classAnnotation = (RequestMapping) clazz.getAnnotation(RequestMapping.class);
+            if (classAnnotation != null) {
+                String classValue = classAnnotation.value()[0];
+                RequestMapping methodAnnotation = (RequestMapping) method.getAnnotation(RequestMapping.class);
+                if (methodAnnotation != null) {
+                    String methodValue = methodAnnotation.value()[0];
+                    url = classValue + methodValue; //url: /orders/findAll.do
+
+                    //封装SysLog
+                    SysLog sysLog = new SysLog();
+                    sysLog.setExecutionTime(time);
+                    sysLog.setUsername(username);
+                    sysLog.setIp(ip);
+                    sysLog.setMethod("[类名]" + clazz.getName() + "[方法名]" + method.getName());
+                    sysLog.setUrl(url);
+                    sysLog.setVisitTime(visitTime);
+                    sysLogService.save(sysLog);
+
+                }
+            }
+        }
+
     }
 }
