@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/adminlte_ssm.iml" filepath="$PROJECT_DIR$/adminlte_ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adminlte.iml" filepath="$PROJECT_DIR$/adminlte.iml" />
       <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_dao/adminlte_ssm_dao.iml" filepath="$PROJECT_DIR$/adminlte_ssm_dao/adminlte_ssm_dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_domain/adminlte_ssm_domain.iml" filepath="$PROJECT_DIR$/adminlte_ssm_domain/adminlte_ssm_domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/adminlte_ssm_service/adminlte_ssm_service.iml" filepath="$PROJECT_DIR$/adminlte_ssm_service/adminlte_ssm_service.iml" />
